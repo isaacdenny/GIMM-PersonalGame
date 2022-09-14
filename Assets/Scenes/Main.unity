@@ -155,9 +155,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97904c643968d95498107a7f67c585df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 3543129328570959070, guid: c8bf9ba1c747487419fb7ed689ea07de,
-    type: 3}
+  projectilePrefab: {fileID: 0}
   firePoint: {fileID: 950876394}
+  projectileSpeed: 20
 --- !u!4 &111543494
 Transform:
   m_ObjectHideFlags: 0
@@ -277,7 +277,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   complete: 0
-  jumpForce: 10
+  jumpForce: 15
 --- !u!1 &510431704
 GameObject:
   m_ObjectHideFlags: 0
@@ -421,7 +421,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   complete: 0
-  moveSpeed: 7
 --- !u!4 &935930589
 Transform:
   m_ObjectHideFlags: 0
@@ -877,6 +876,7 @@ MonoBehaviour:
     m_Bits: 8
   groundCheckRadius: 0.1
   groundCheck: {fileID: 1431831991}
+  fallGravityScale: 7
 --- !u!1 &1832427546
 GameObject:
   m_ObjectHideFlags: 0
