@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class PlayerBrain : StateMachine
 {
-    public State playerJump, playerDash, playerIdle, playerFall, playerRun;
+    public State playerJump, playerDash, playerIdle, playerFall, playerRun, playerDead, playerStun;
 
-    public static PlayerBrain instance;
+    public static PlayerBrain instance { get; private set; }
     public static bool airControlEnabled = true;
     public static Rigidbody2D rb;
 

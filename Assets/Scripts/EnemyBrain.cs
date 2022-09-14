@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyBrain : StateMachine
 {
-    [SerializeField] State Idle, Aggro, Attack;
+    [SerializeField] State Idle, Aggro, Attack, Dead;
     [SerializeField] LayerMask mask;
 
     public static LayerMask playerMask;
