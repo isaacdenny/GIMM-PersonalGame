@@ -1,25 +1,40 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerInputHandler : MonoBehaviour
+public static class PlayerInputHandler
 {
-    public static PlayerInputHandler instance;
-    void Awake()
-    {
-        if (instance == null)
-        {
-            instance = this;
-        }
-        else if (instance != null && instance != this)
-        {
-            instance = this;
-        }
-    }
+    public const float INPUTDEADZONE = 0.1f;
 
     // Update is called once per frame
-    void Update()
+
+    public static bool CheckForJumpInput()
     {
-        
+        if (Input.GetButtonDown("Jump"))
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public static bool CheckForShootInput()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            return true;
+        }
+        return false;
+    }
+    public static float CheckForMovementInput()
+    {
+        float moveX = Input.GetAxisRaw("Horizontal");
+
+        if (Mathf.Abs(moveX) >= INPUTDEADZONE)
+        {
+            return moveX;
+        }
+
+        return 0f;
     }
 }
