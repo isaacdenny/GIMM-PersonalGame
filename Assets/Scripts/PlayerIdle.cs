@@ -9,6 +9,7 @@ public class PlayerIdle : State
     public override void Enter()
     {
         base.Enter();
+        PlayerBrain.rb.gravityScale = 0f;
     }
 
     public override void Do()

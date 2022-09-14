@@ -1,32 +1,30 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 
 public class PlayerRun : State
 {
-    public float moveSpeed = 10f;
-
-    Rigidbody2D rb;
-
-
+    public static float moveSpeed = 10f;
 
     internal float Move(float moveX)
     {
         
-        rb.velocity = new Vector3(moveX * moveSpeed, rb.velocity.y, 0f);
+        PlayerBrain.rb.velocity = new Vector3(moveX * moveSpeed, PlayerBrain.rb.velocity.y, 0f);
         return moveX;
     }
 
     public override void Enter()
     {
         base.Enter();
-        rb = PlayerBrain.instance.transform.GetComponent<Rigidbody2D>();
+        PlayerBrain.rb = PlayerBrain.instance.transform.GetComponent<Rigidbody2D>();
+        PlayerBrain.rb.gravityScale = 0f;
     }
     public override void Do()
     {
         
-        base.Do();
-        if (Move(PlayerInputHandler.CheckForMovementInput()) < PlayerInputHandler.INPUTDEADZONE)
+        if (Mathf.Abs(Move(PlayerInputHandler.CheckForMovementInput())) < PlayerInputHandler.INPUTDEADZONE)
         {
             PlayerBrain.instance.Set(PlayerBrain.instance.playerIdle);
         }
