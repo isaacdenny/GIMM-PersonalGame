@@ -5,26 +5,37 @@ using UnityEngine;
 
 public class PlayerJump : State
 {
-    Rigidbody2D rb;
+    
     [SerializeField] private float jumpForce;
-
+    
     public const float FALLDEADZONE = -0.1f;
 
     public override void Enter()
     {
         base.Enter();
-        rb = PlayerBrain.instance.GetComponent<Rigidbody2D>();
+        PlayerBrain.rb = PlayerBrain.instance.GetComponent<Rigidbody2D>();
+        PlayerBrain.rb.gravityScale = 3f;
         Jump();
     }
 
     internal void Jump()
     {
-        rb.AddForce(jumpForce * Vector2.up, ForceMode2D.Impulse);
+        PlayerBrain.rb.AddForce(jumpForce * Vector2.up, ForceMode2D.Impulse);
+    }
+
+    internal float AirMove(float moveX)
+    {
+        PlayerBrain.rb.velocity = new Vector3(moveX * PlayerRun.moveSpeed, PlayerBrain.rb.velocity.y, 0f);
+        return moveX;
     }
 
     public override void Do()
     {
-        if (rb.velocity.y < FALLDEADZONE)
+        if (PlayerBrain.airControlEnabled)
+        {
+            AirMove(PlayerInputHandler.CheckForMovementInput());
+        }
+        if (PlayerBrain.rb.velocity.y < FALLDEADZONE)
         {
             complete = true;
         }

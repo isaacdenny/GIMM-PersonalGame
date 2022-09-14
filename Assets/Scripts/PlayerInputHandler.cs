@@ -17,15 +17,6 @@ public static class PlayerInputHandler
         }
         return false;
     }
-
-    public static bool CheckForShootInput()
-    {
-        if (Input.GetMouseButtonDown(0))
-        {
-            return true;
-        }
-        return false;
-    }
     public static float CheckForMovementInput()
     {
         float moveX = Input.GetAxisRaw("Horizontal");
@@ -34,7 +25,38 @@ public static class PlayerInputHandler
         {
             return moveX;
         }
+        else
+        {
+            return 0f;
+        }
+    }
 
-        return 0f;
+    /*
+    public static Vector2Int CheckForAimInput()
+    {
+        float aimY = Input.GetAxisRaw("Vertical");
+
+        if (aimY > INPUTDEADZONE)
+        {
+            return Vector2Int.up;
+        }
+        else if (aimY < INPUTDEADZONE)
+        {
+            return Vector2Int.down;
+        }
+        else return Vector2Int.zero;
+    }
+    */
+
+    public static bool CheckForShootInput()
+    {
+        if (Input.GetButtonDown("Fire1"))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }

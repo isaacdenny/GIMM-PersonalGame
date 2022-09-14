@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,7 +8,9 @@ public class PlayerBrain : StateMachine
     public State playerJump, playerDash, playerIdle, playerFall, playerRun;
 
     public static PlayerBrain instance;
-    
+    public static bool airControlEnabled = true;
+    public static Rigidbody2D rb;
+
     void Awake()
     {
         if (instance == null)
@@ -24,12 +27,26 @@ public class PlayerBrain : StateMachine
     private void Start()
     {
         state = playerIdle;
+        rb = GetComponent<Rigidbody2D>();
     }
 
 
     void Update()
     {
         StateUpdate();
+        UpdateScale();
+    }
+
+    private void UpdateScale()
+    {
+        if (PlayerInputHandler.CheckForMovementInput() > .1f)
+        {
+            transform.localScale = Vector3.one;
+        }
+        else if (PlayerInputHandler.CheckForMovementInput() < -.1f)
+        {
+            transform.localScale = new Vector3(-1, 1, 1);
+        }
     }
 
     private void FixedUpdate()
