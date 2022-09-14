@@ -6,7 +6,7 @@ public class CameraFollowTarget : MonoBehaviour
 {
     [SerializeField] Transform target;
     [SerializeField] float moveSpeed;
-    [SerializeField] private float radius = 1f;
+    //[SerializeField] private float radius = 1f;
     [SerializeField] private bool verticalFollow = false;
 
     // Start is called before the first frame update
