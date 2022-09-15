@@ -1,10 +1,15 @@
 using System;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     private int score = 0;
+
+    [SerializeField] List<GameObject> dontDestroyList = new();
+    private bool levelComplete;
 
     public static GameManager instance { get; private set; }
     // Start is called before the first frame update
@@ -19,6 +24,15 @@ public class GameManager : MonoBehaviour
             Destroy(instance);
             instance = this;
         }
+
+        DontDestroyOnLoad(gameObject);
+
+        foreach (GameObject go in dontDestroyList)
+        {
+            DontDestroyOnLoad(go);
+        }
+
+        levelComplete = false;
     }
 
     // Update is called once per frame
@@ -41,8 +55,20 @@ public class GameManager : MonoBehaviour
         return score;
     }
 
-    //load levels
-    //keeping track of score
+    public void LoadNextLevel()
+    {
+        AsyncOperation operation = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
 
+        while (!operation.isDone)
+        {
+            float progress = operation.progress;
+            Debug.Log("progress");
+        }
+    }
 
+    internal void WinLevel()
+    {
+        levelComplete = true;
+        LoadNextLevel();
+    }
 }
