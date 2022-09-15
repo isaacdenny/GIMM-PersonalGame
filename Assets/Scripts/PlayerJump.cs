@@ -8,7 +8,7 @@ public class PlayerJump : State
     
     [SerializeField] private float jumpForce;
     
-    public const float FALLDEADZONE = -0.1f;
+    public const float FALLDEADZONE = -0.01f;
 
     public override void Enter()
     {
@@ -35,7 +35,7 @@ public class PlayerJump : State
         {
             AirMove(PlayerInputHandler.CheckForMovementInput());
         }
-        if (PlayerBrain.rb.velocity.y < FALLDEADZONE)
+        if (PlayerBrain.rb.velocity.y <= FALLDEADZONE)
         {
             complete = true;
         }

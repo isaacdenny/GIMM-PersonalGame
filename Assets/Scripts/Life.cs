@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class Life : MonoBehaviour
 {
-    [SerializeField] float maxHealth;
+    [SerializeField] float maxHealth = 20;
     PlayerBrain brain;
     float health;
 
     private void Awake()
     {
         brain = GetComponent<PlayerBrain>();
+        health = maxHealth;
     }
 
     public void TakeDamage(int damage)
@@ -23,13 +24,7 @@ public class Life : MonoBehaviour
     {
         if (health <= 0f)
         {
-            Die();
+            brain.Set(brain.playerDead);
         }
-    }
-
-    public void Die()
-    {
-        brain.Set(brain.playerDead);
-
     }
 }
