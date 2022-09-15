@@ -10,6 +10,7 @@ public class PlayerIdle : State
     {
         base.Enter();
         PlayerBrain.rb.gravityScale = 0f;
+        PlayerBrain.animator.SetTrigger("Idle");
     }
 
     public override void Do()

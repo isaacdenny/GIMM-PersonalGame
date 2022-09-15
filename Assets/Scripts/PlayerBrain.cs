@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class PlayerBrain : StateMachine
@@ -9,7 +10,8 @@ public class PlayerBrain : StateMachine
 
     public static PlayerBrain instance { get; private set; }
     public static bool airControlEnabled = true;
-    public static Rigidbody2D rb;
+    public static Rigidbody2D rb { get; private set; }
+    public static Animator animator { get; private set; }
 
     void Awake()
     {
@@ -28,6 +30,7 @@ public class PlayerBrain : StateMachine
     {
         state = playerIdle;
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 
 

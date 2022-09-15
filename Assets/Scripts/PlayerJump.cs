@@ -13,8 +13,8 @@ public class PlayerJump : State
     public override void Enter()
     {
         base.Enter();
-        PlayerBrain.rb = PlayerBrain.instance.GetComponent<Rigidbody2D>();
         PlayerBrain.rb.gravityScale = 3f;
+        PlayerBrain.animator.SetTrigger("Jump");
         Jump();
     }
 

@@ -13,6 +13,7 @@ public class PlayerFall : State
     {
         base.Enter();
         PlayerBrain.rb.gravityScale = fallGravityScale;
+        PlayerBrain.animator.SetTrigger("Fall");
     }
     internal float AirMove(float moveX)
     {

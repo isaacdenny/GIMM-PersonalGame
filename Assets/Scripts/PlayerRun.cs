@@ -18,7 +18,7 @@ public class PlayerRun : State
     public override void Enter()
     {
         base.Enter();
-        PlayerBrain.rb = PlayerBrain.instance.transform.GetComponent<Rigidbody2D>();
+        PlayerBrain.animator.SetTrigger("Run");
         PlayerBrain.rb.gravityScale = 0f;
     }
     public override void Do()
