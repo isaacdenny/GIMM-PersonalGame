@@ -12,6 +12,7 @@ public class PlayerShoot : MonoBehaviour
     [Header("Properties")]
     [SerializeField] float projectileSpeed = 20f;
     [SerializeField] private float fireRate = 10f;
+    [SerializeField] private float damage = 10f;
     private float timeToNextShoot = 0f;
 
     // Update is called once per frame
@@ -28,6 +29,7 @@ public class PlayerShoot : MonoBehaviour
 
             GameObject projectile = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
             projectile.GetComponent<Rigidbody2D>().AddForce(projectileSpeed * (firePoint.position - transform.position), ForceMode2D.Impulse);
+            projectile.GetComponent<ProjectileBehavior>().damage = damage;
             Destroy(projectile, 1f);
         }
     }
