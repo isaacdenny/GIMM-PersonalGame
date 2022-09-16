@@ -9,7 +9,7 @@ public class DoorBehavior : MonoBehaviour
         PlayerBrain brain = collision.GetComponent<PlayerBrain>();
         if (brain != null)
         {
-            GameManager.instance.LoadNextLevel();
+            GameManager.Instance.LoadNextLevel();
         }
     }
 }

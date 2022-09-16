@@ -21,6 +21,7 @@ public class EnemyAttack : State
     public IEnumerator Attack()
     {
         yield return new WaitForSeconds(4);
+        Debug.Log("Attack");
         complete = true;
     }
 }

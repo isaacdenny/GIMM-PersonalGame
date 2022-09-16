@@ -6,11 +6,11 @@ using Random = UnityEngine.Random;
 
 public class EnemyBrain : StateMachine
 {
-    [SerializeField] State Idle, Aggro, Attack, Stun, Dead;
+    [SerializeField] State Aggro, Attack, Stun, Dead;
     [SerializeField] LayerMask mask;
 
-    public static LayerMask playerMask;
-    public static float attackRange = 7f;
+    public static LayerMask crystalMask;
+    
 
     public static Transform target;
     public static Rigidbody2D rb;
@@ -21,13 +21,14 @@ public class EnemyBrain : StateMachine
 
     private void Awake()
     {
-        playerMask = mask;
+        crystalMask = mask;
         health = maxHealth;
         rb = GetComponent<Rigidbody2D>();
+
     }
     void Start()
     {
-        state = Idle;
+        Set(Aggro);
     }
 
     // Update is called once per frame
@@ -42,23 +43,19 @@ public class EnemyBrain : StateMachine
 
     private void Die()
     {
-        GameManager.instance.AddToScore(Random.Range(enemyMinPointValue, enemyMaxPointValue));
+        GameManager.Instance.AddToScore(Random.Range(enemyMinPointValue, enemyMaxPointValue));
         Set(Dead);
     }
 
     public override void SetNextState()
     {
-        if (state == Idle)
-        {
-            Set(Aggro);
-        }
-        else if (state == Aggro)
+        if (state == Aggro)
         {
             Set(Attack);
         }
         else if (state == Attack)
         {
-            Set(Idle);
+            Set(Aggro);
         }
     }
 

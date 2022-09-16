@@ -21,6 +21,6 @@ public class UIManager : MonoBehaviour
 
     private void UpdateUI()
     {
-        scoreText.text = "Score: " + GameManager.instance.GetScore();
+        scoreText.text = "Score: " + GameManager.Instance.GetScore();
     }
 }

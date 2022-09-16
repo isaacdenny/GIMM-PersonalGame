@@ -18,7 +18,7 @@ public class PlayerIdle : State
         base.Do();
         if (PlayerInputHandler.CheckForMovementInput().magnitude != 0)
         {
-            PlayerBrain.instance.Set(PlayerBrain.instance.playerRun);
+            PlayerBrain.Instance.Set(PlayerBrain.Instance.playerRun);
         }
     }
 }

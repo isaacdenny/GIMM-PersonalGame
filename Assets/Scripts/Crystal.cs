@@ -7,8 +7,20 @@ public class Crystal : MonoBehaviour
     float health;
     [SerializeField] float maxHealth = 100f;
 
+    public static Crystal Instance { get; private set; }
+
     private void Awake()
     {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else if (Instance != null)
+        {
+            Destroy(Instance.gameObject);
+            Instance = this;
+        }
+
         health = maxHealth;
     }
     public void TakeDamage(float damage)
@@ -20,7 +32,7 @@ public class Crystal : MonoBehaviour
     {
         if (health <= 0f)
         {
-            GameManager.instance.WinLevel();
+            GameManager.Instance.WinLevel();
         }
     }
 }

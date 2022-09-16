@@ -11,18 +11,18 @@ public class GameManager : MonoBehaviour
     [SerializeField] List<GameObject> dontDestroyList = new();
     private bool levelComplete;
 
-    public static GameManager instance { get; private set; }
+    public static GameManager Instance { get; private set; }
     // Start is called before the first frame update
     void Awake()
     {
-        if (instance == null)
+        if (Instance == null)
         {
-            instance = this;
+            Instance = this;
         }
-        else if (instance != null && instance != this)
+        else if (Instance != null && Instance != this)
         {
-            Destroy(instance);
-            instance = this;
+            Destroy(Instance);
+            Instance = this;
         }
 
         DontDestroyOnLoad(gameObject);

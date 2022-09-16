@@ -47,6 +47,7 @@ public abstract class StateMachine : MonoBehaviour
         else if (state == null)
         {
             state = newState;
+            state.Enter();
         }
     }
 
