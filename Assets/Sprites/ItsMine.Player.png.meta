@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: fd01ae44168fd3b44acd94c40fa19733
+guid: 8502ee20016998d4796b7e413327d552
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 24
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -116,13 +116,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Nobody.SpriteSheet_0
+      name: ItsMine.Player_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 80
-        height: 80
+        x: 381
+        y: 152
+        width: 37
+        height: 30
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -130,20 +130,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cb6343c4b7a169f45a7c7bf262850e18
-      internalID: -200545552
+      spriteID: aaf24bbe976df894ba33683908072746
+      internalID: -1205879772
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Nobody.SpriteSheet_1
+      name: ItsMine.Player_1
       rect:
         serializedVersion: 2
-        x: 80
-        y: 0
-        width: 80
-        height: 80
+        x: 429
+        y: 160
+        width: 6
+        height: 4
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -151,20 +151,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e69ce8f60b355014190869bba43ea935
-      internalID: 1093386681
+      spriteID: 48a272f6770d742409b2477d0ba92167
+      internalID: 681109691
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Nobody.SpriteSheet_2
+      name: ItsMine.Player_2
       rect:
         serializedVersion: 2
-        x: 160
-        y: 0
-        width: 80
-        height: 80
+        x: 429
+        y: 153
+        width: 4
+        height: 4
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -172,134 +172,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ea913006b8f4f0a43a7ed4891c8ddd5f
-      internalID: 332651539
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Nobody.SpriteSheet_3
-      rect:
-        serializedVersion: 2
-        x: 240
-        y: 0
-        width: 80
-        height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2710fdeb6a7138f40b6ded9ef573f9ae
-      internalID: -1168017405
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Nobody.SpriteSheet_4
-      rect:
-        serializedVersion: 2
-        x: 320
-        y: 0
-        width: 80
-        height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9ccd464329ff7f245894012f9f052907
-      internalID: -70998497
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Nobody.SpriteSheet_5
-      rect:
-        serializedVersion: 2
-        x: 400
-        y: 0
-        width: 80
-        height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a7d8f6bcee10724488d3c8914ab5aab4
-      internalID: 1262656752
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Nobody.SpriteSheet_6
-      rect:
-        serializedVersion: 2
-        x: 480
-        y: 0
-        width: 80
-        height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e667152a1d6d13b4da9b9cf8e564f95b
-      internalID: -26450592
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Nobody.SpriteSheet_7
-      rect:
-        serializedVersion: 2
-        x: 560
-        y: 0
-        width: 80
-        height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4d8567e6d69ef9b4f95beabc3bf012d9
-      internalID: 956769201
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Nobody.SpriteSheet_8
-      rect:
-        serializedVersion: 2
-        x: 640
-        y: 0
-        width: 80
-        height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 396f7ff10990817449d85287507aa552
-      internalID: 1670974950
+      spriteID: 3649c0fb36253a24199bbfa79ecdcc42
+      internalID: 1586207784
       vertices: []
       indices: 
       edges: []
@@ -315,15 +189,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Nobody.SpriteSheet_8: 1670974950
-      Nobody.SpriteSheet_2: 332651539
-      Nobody.SpriteSheet_7: 956769201
-      Nobody.SpriteSheet_4: -70998497
-      Nobody.SpriteSheet_3: -1168017405
-      Nobody.SpriteSheet_6: -26450592
-      Nobody.SpriteSheet_1: 1093386681
-      Nobody.SpriteSheet_0: -200545552
-      Nobody.SpriteSheet_5: 1262656752
+      ItsMine.Player_1: 681109691
+      ItsMine.Player_2: 1586207784
+      ItsMine.Player_0: -1205879772
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

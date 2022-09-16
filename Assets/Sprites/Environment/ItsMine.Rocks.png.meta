@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 137b4794b38cdbc41b6a1a6e19c75c94
+guid: eacb50c203818294eb592792f2519e37
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 24
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -116,13 +116,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Nobody.SpriteSheet.Idle_0
+      name: ItsMine.Rocks_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 80
-        height: 80
+        x: 404
+        y: 233
+        width: 76
+        height: 90
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -130,20 +130,41 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f36d1893aac8b354ca88633643f21e7c
-      internalID: 5700833
+      spriteID: 792f93ae756cf6a49a62f9e314fcd78c
+      internalID: 1631801440
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Nobody.SpriteSheet.Idle_1
+      name: ItsMine.Rocks_1
+      rect:
+        serializedVersion: 2
+        x: 447
+        y: 229
+        width: 23
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c71fa57ab1907ce4b89e8b2a5f898389
+      internalID: 959849237
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ItsMine.Rocks_2
       rect:
         serializedVersion: 2
         x: 80
-        y: 0
-        width: 80
-        height: 80
+        y: 69
+        width: 67
+        height: 89
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -151,20 +172,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 099cd9886fe0e904b84f5896b38630f9
-      internalID: -1406421478
+      spriteID: 676f37d89ace29d4b92142588d9cce5b
+      internalID: 460513384
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Nobody.SpriteSheet.Idle_2
+      name: ItsMine.Rocks_3
       rect:
         serializedVersion: 2
-        x: 160
-        y: 0
-        width: 80
-        height: 80
+        x: 251
+        y: 135
+        width: 96
+        height: 84
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -172,20 +193,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c5541b6801179474981d1fb5d89e70ad
-      internalID: 1476662860
+      spriteID: f273dd8d138036043b3410025defc3ef
+      internalID: 479829776
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Nobody.SpriteSheet.Idle_3
+      name: ItsMine.Rocks_4
       rect:
         serializedVersion: 2
-        x: 240
-        y: 0
-        width: 80
-        height: 80
+        x: 452
+        y: 68
+        width: 52
+        height: 53
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -193,8 +214,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a64555a142f301744a0792b16d375a0d
-      internalID: -1235660812
+      spriteID: f4ce6f94afb4dd3478038bee5bdce6fc
+      internalID: 54625551
       vertices: []
       indices: 
       edges: []
@@ -210,10 +231,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Nobody.SpriteSheet.Idle_3: -1235660812
-      Nobody.SpriteSheet.Idle_1: -1406421478
-      Nobody.SpriteSheet.Idle_2: 1476662860
-      Nobody.SpriteSheet.Idle_0: 5700833
+      ItsMine.Rocks_1: 959849237
+      ItsMine.Rocks_4: 54625551
+      ItsMine.Rocks_2: 460513384
+      ItsMine.Rocks_3: 479829776
+      ItsMine.Rocks_0: 1631801440
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

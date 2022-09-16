@@ -6,7 +6,7 @@ using UnityEngine.PlayerLoop;
 
 public class PlayerRun : State
 {
-    public static float moveSpeed = 10f;
+    [SerializeField] float moveSpeed = 10f;
 
     internal Vector2 Move(Vector2 move)
     {

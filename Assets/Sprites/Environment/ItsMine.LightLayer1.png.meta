@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b3faef61cd51cba44afd3db80eb2cb45
+guid: 043e80e114968204682ee1060c98f328
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 24
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -116,13 +116,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Nobody.SpriteSheet.Jump_0
+      name: ItsMine.LightLayer1_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 80
-        height: 80
+        x: 84
+        y: 32
+        width: 445
+        height: 286
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -130,29 +130,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 47aaa768e4b380f43aa7027cc82568e6
-      internalID: -2056163839
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Nobody.SpriteSheet.Jump_1
-      rect:
-        serializedVersion: 2
-        x: 80
-        y: 0
-        width: 80
-        height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 610776511c2a5374d83e3e750c418b83
-      internalID: -1346214138
+      spriteID: cd2197a96715f6f4ca249473608164aa
+      internalID: -386597088
       vertices: []
       indices: 
       edges: []
@@ -168,8 +147,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Nobody.SpriteSheet.Jump_0: -2056163839
-      Nobody.SpriteSheet.Jump_1: -1346214138
+      ItsMine.LightLayer1_0: -386597088
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

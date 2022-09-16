@@ -29,7 +29,7 @@ public class PlayerShoot : MonoBehaviour
             timeToNextShoot = Time.time + 1 / fireRate;
 
             GameObject projectile = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
-            projectile.GetComponent<Rigidbody2D>().AddForce(projectileSpeed * (firePoint.position - transform.position), ForceMode2D.Impulse);
+            projectile.GetComponent<Rigidbody2D>().AddForce(projectileSpeed * firePoint.right, ForceMode2D.Impulse);
             projectile.GetComponent<ProjectileBehavior>().damage = damage;
             Destroy(projectile, 1f);
         }
