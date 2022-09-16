@@ -26,7 +26,7 @@ public class PlayerRun : State
         
         if (Move(PlayerInputHandler.CheckForMovementInput()).magnitude < PlayerInputHandler.INPUTDEADZONE)
         {
-            PlayerBrain.instance.Set(PlayerBrain.instance.playerIdle);
+            PlayerBrain.Instance.Set(PlayerBrain.Instance.playerIdle);
         }
     }
 }

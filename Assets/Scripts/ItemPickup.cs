@@ -9,7 +9,7 @@ public class ItemPickup : MonoBehaviour
         Collectible collectible = collision.GetComponent<Collectible>();
         if (collectible == null) return;
 
-        GameManager.instance.AddToScore(collectible.pointValue);
+        GameManager.Instance.AddToScore(collectible.pointValue);
         Destroy(collectible.gameObject);
     }
 }

@@ -8,20 +8,20 @@ public class PlayerBrain : StateMachine
 {
     public State playerDash, playerIdle, playerRun, playerDead, playerStun;
 
-    public static PlayerBrain instance { get; private set; }
+    public static PlayerBrain Instance { get; private set; }
     public static Rigidbody2D rb { get; private set; }
     public static Animator animator { get; private set; }
 
     void Awake()
     {
-        if (instance == null)
+        if (Instance == null)
         {
-            instance = this;
+            Instance = this;
         }
-        else if (instance != null)
+        else if (Instance != null)
         {
-            Destroy(instance);
-            instance = this;
+            Destroy(Instance);
+            Instance = this;
         }
     }
 
@@ -53,7 +53,5 @@ public class PlayerBrain : StateMachine
         {
             Set(playerRun);
         }
-
-        
     }
 }
