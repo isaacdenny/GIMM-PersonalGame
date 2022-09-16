@@ -16,13 +16,9 @@ public class PlayerIdle : State
     public override void Do()
     {
         base.Do();
-        if (PlayerInputHandler.CheckForMovementInput() != 0)
+        if (PlayerInputHandler.CheckForMovementInput().magnitude != 0)
         {
             PlayerBrain.instance.Set(PlayerBrain.instance.playerRun);
-        }
-        if (PlayerInputHandler.CheckForJumpInput())
-        {
-            PlayerBrain.instance.Set(PlayerBrain.instance.playerJump);
         }
     }
 }

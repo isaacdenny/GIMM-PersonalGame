@@ -9,6 +9,7 @@ public static class PlayerInputHandler
 
     // Update is called once per frame
 
+    /*
     public static bool CheckForJumpInput()
     {
         if (Input.GetButtonDown("Jump"))
@@ -16,18 +17,21 @@ public static class PlayerInputHandler
             return true;
         }
         return false;
-    }
-    public static float CheckForMovementInput()
+    }*/
+
+    public static Vector2 CheckForMovementInput()
     {
         float moveX = Input.GetAxisRaw("Horizontal");
+        float moveY = Input.GetAxisRaw("Vertical");
 
-        if (Mathf.Abs(moveX) >= INPUTDEADZONE)
+        if (Mathf.Abs(moveX) >= INPUTDEADZONE || Mathf.Abs(moveY) >= INPUTDEADZONE)
         {
-            return moveX;
+            Vector2 move = new Vector2(moveX, moveY);
+            return move;
         }
         else
         {
-            return 0f;
+            return Vector2.zero;
         }
     }
 

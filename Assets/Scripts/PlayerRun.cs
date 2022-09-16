@@ -8,11 +8,11 @@ public class PlayerRun : State
 {
     public static float moveSpeed = 10f;
 
-    internal float Move(float moveX)
+    internal Vector2 Move(Vector2 move)
     {
         
-        PlayerBrain.rb.velocity = new Vector3(moveX * moveSpeed, PlayerBrain.rb.velocity.y, 0f);
-        return moveX;
+        PlayerBrain.rb.velocity = move * moveSpeed;
+        return move;
     }
 
     public override void Enter()
@@ -24,13 +24,9 @@ public class PlayerRun : State
     public override void Do()
     {
         
-        if (Mathf.Abs(Move(PlayerInputHandler.CheckForMovementInput())) < PlayerInputHandler.INPUTDEADZONE)
+        if (Move(PlayerInputHandler.CheckForMovementInput()).magnitude < PlayerInputHandler.INPUTDEADZONE)
         {
             PlayerBrain.instance.Set(PlayerBrain.instance.playerIdle);
-        }
-        if (PlayerInputHandler.CheckForJumpInput())
-        {
-            PlayerBrain.instance.Set(PlayerBrain.instance.playerJump);
         }
     }
 }

@@ -8,7 +8,7 @@ public class ProjectileBehavior : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         EnemyBrain enemy = collision.GetComponent<EnemyBrain>();
-        Finish finish = collision.GetComponent<Finish>();
+        Crystal finish = collision.GetComponent<Crystal>();
         if (enemy != null)
         {
             enemy.TakeDamage(damage);

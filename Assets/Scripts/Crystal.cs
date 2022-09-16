@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Finish : MonoBehaviour
+public class Crystal : MonoBehaviour
 {
     float health;
     [SerializeField] float maxHealth = 100f;

@@ -6,10 +6,9 @@ using UnityEngine;
 
 public class PlayerBrain : StateMachine
 {
-    public State playerJump, playerDash, playerIdle, playerFall, playerRun, playerDead, playerStun;
+    public State playerDash, playerIdle, playerRun, playerDead, playerStun;
 
     public static PlayerBrain instance { get; private set; }
-    public static bool airControlEnabled = true;
     public static Rigidbody2D rb { get; private set; }
     public static Animator animator { get; private set; }
 
@@ -37,19 +36,6 @@ public class PlayerBrain : StateMachine
     void Update()
     {
         StateUpdate();
-        UpdateScale();
-    }
-
-    private void UpdateScale()
-    {
-        if (PlayerInputHandler.CheckForMovementInput() > .1f)
-        {
-            transform.localScale = Vector3.one;
-        }
-        else if (PlayerInputHandler.CheckForMovementInput() < -.1f)
-        {
-            transform.localScale = new Vector3(-1, 1, 1);
-        }
     }
 
     private void FixedUpdate()
@@ -59,15 +45,7 @@ public class PlayerBrain : StateMachine
 
     public override void SetNextState()
     {
-        if (state == playerJump)
-        {
-            Set(playerFall);
-        }
-        else if (state == playerRun)
-        {
-            Set(playerIdle);
-        }
-        else if (state == playerFall)
+        if (state == playerRun)
         {
             Set(playerIdle);
         }
