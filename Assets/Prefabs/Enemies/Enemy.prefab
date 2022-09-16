@@ -256,6 +256,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   complete: 0
   enemyParentGameObject: {fileID: 8745481842027544778}
+  drops:
+  - {fileID: 1909554475393366464, guid: c3596b3499d57bb458ddaca981a403c0, type: 3}
+  - {fileID: 7324841175079478059, guid: d06f8635595015e41a0366e9445c8092, type: 3}
+  - {fileID: 3536752329107218877, guid: cb69b94ca4d34f947bd83530ea835c2f, type: 3}
+  dropChance: 0.5
 --- !u!1 &8745481842027544778
 GameObject:
   m_ObjectHideFlags: 0
@@ -314,8 +319,6 @@ MonoBehaviour:
     m_Bits: 256
   health: 0
   maxHealth: 20
-  enemyMinPointValue: 100
-  enemyMaxPointValue: 300
 --- !u!61 &8745481842027544788
 BoxCollider2D:
   m_ObjectHideFlags: 0

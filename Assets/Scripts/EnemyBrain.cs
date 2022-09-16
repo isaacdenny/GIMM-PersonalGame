@@ -16,8 +16,6 @@ public class EnemyBrain : StateMachine
     public static Rigidbody2D rb;
     [SerializeField] private float health;
     [SerializeField] private float maxHealth = 20f;
-    [SerializeField] int enemyMinPointValue = 100;
-    [SerializeField] int enemyMaxPointValue = 300;
 
     internal void InitEnemy()
     {
@@ -39,7 +37,6 @@ public class EnemyBrain : StateMachine
 
     private void Die()
     {
-        GameManager.Instance.AddToScore(Random.Range(enemyMinPointValue, enemyMaxPointValue));
         Set(Dead);
     }
 
