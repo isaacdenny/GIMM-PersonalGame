@@ -9,9 +9,13 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] List<GameObject> dontDestroyList = new();
     private bool levelComplete;
+    private bool waveComplete;
     private int score = 0;
+    private int currentWave = 0;
     [SerializeField] float timeToWin = 60f;
+    [SerializeField] int waveCount = 3;
     [SerializeField] private float gameTimer = 0f;
+    private bool gameTimerRunning = false;
 
     public static GameManager Instance { get; private set; }
 
@@ -39,8 +43,14 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        InitWaveTimer();
+    }
+
+    private void InitWaveTimer()
+    {
         gameTimer = timeToWin;
     }
+
     void Update()
     {
         CheckForWin();
@@ -48,11 +58,17 @@ public class GameManager : MonoBehaviour
 
     private void CheckForWin()
     {
-        if (gameTimer <= 0f && !levelComplete)
+        if (!gameTimerRunning) return;
+
+        if (gameTimer <= 0f && !levelComplete && currentWave >= waveCount)
         {
             Time.timeScale = 0f;
             WinLevel();
             return;
+        }
+        else if (gameTimer <= 0f && !levelComplete && currentWave < waveCount)
+        {
+            gameTimerRunning = false;
         }
         gameTimer -= Time.deltaTime;
     }
@@ -89,6 +105,14 @@ public class GameManager : MonoBehaviour
         levelComplete = true;
         InitLoseScreen();
     }
+    public void StartNextWave()
+    {
+        if (gameTimerRunning) return;
+        currentWave++;
+        InitWaveTimer();
+        gameTimerRunning = true;
+        waveComplete = false;
+    }
 
     private void InitLoseScreen()
     {
@@ -110,5 +134,21 @@ public class GameManager : MonoBehaviour
     internal bool GetLevelStatus()
     {
         return levelComplete;
+    }
+    internal bool GetWaveStatus()
+    {
+        return waveComplete;
+    }
+    internal bool GetTimerStatus()
+    {
+        return gameTimerRunning;
+    }
+    internal int GetCurrentWave()
+    {
+        return currentWave;
+    }
+    internal int GetWaveCount()
+    {
+        return waveCount;
     }
 }

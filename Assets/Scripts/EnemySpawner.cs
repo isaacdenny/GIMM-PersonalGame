@@ -20,7 +20,7 @@ public class EnemySpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!GameManager.Instance.GetLevelStatus() && Time.time >= timeToNextSpawn)
+        if (GameManager.Instance.GetTimerStatus() && Time.time >= timeToNextSpawn)
         {
             timeToNextSpawn = Time.time + 1 / spawnRate;
             SpawnEnemy();

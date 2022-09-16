@@ -8,10 +8,12 @@ public class UIManager : MonoBehaviour
 {
     [SerializeField] TMP_Text scoreText;
     [SerializeField] TMP_Text timerText;
+    [SerializeField] TMP_Text waveText;
+    [SerializeField] TMP_Text waveCountText;
     // Start is called before the first frame update
     void Start()
     {
-        
+        waveCountText.text = "Total Waves: " + GameManager.Instance.GetWaveCount();
     }
 
     // Update is called once per frame
@@ -27,8 +29,6 @@ public class UIManager : MonoBehaviour
 
         scoreText.text = "Score: " + GameManager.Instance.GetScore();
 
-        //if (GameManager.Instance.GetTimer() <= 0) return;
-
         if (GameManager.Instance.GetTimer() <= 60)
         {
             timerText.text = secondValue.ToString();
@@ -38,5 +38,6 @@ public class UIManager : MonoBehaviour
             timerText.text = minuteValue + ":" + secondValue;
         }
 
+        waveText.text = "Wave: " + GameManager.Instance.GetCurrentWave();
     }
 }
