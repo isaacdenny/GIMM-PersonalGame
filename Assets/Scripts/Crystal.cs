@@ -32,7 +32,7 @@ public class Crystal : MonoBehaviour
     {
         if (health <= 0f)
         {
-            GameManager.Instance.WinLevel();
+            GameManager.Instance.LoseLevel();
         }
     }
 }
