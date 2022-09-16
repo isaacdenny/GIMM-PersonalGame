@@ -19,6 +19,7 @@ public class PlayerShoot : MonoBehaviour
     void Update()
     {
         Shoot(PlayerInputHandler.CheckForShootInput());
+        RotateToMouse();
     }
 
     internal void Shoot(bool shoot)
@@ -32,5 +33,13 @@ public class PlayerShoot : MonoBehaviour
             projectile.GetComponent<ProjectileBehavior>().damage = damage;
             Destroy(projectile, 1f);
         }
+    }
+
+    internal void RotateToMouse()
+    {
+        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 lookDir = mousePos - PlayerBrain.rb.position;
+        float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
+        PlayerBrain.rb.rotation = angle;
     }
 }

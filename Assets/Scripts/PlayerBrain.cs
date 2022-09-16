@@ -53,7 +53,5 @@ public class PlayerBrain : StateMachine
         {
             Set(playerRun);
         }
-
-        
     }
 }
