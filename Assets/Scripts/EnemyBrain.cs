@@ -19,15 +19,11 @@ public class EnemyBrain : StateMachine
     [SerializeField] int enemyMinPointValue = 100;
     [SerializeField] int enemyMaxPointValue = 300;
 
-    private void Awake()
+    internal void InitEnemy()
     {
         crystalMask = mask;
         health = maxHealth;
         rb = GetComponent<Rigidbody2D>();
-
-    }
-    void Start()
-    {
         Set(Aggro);
     }
 

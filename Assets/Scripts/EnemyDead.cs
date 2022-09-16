@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class EnemyDead : State
 {
-    [SerializeField] GameObject enemyParentTransform;
+    [SerializeField] GameObject enemyParentGameObject;
     // Start is called before the first frame update
     public override void Enter()
     {
         base.Enter();
-        EnemyBrain.rb.bodyType = RigidbodyType2D.Static;
-        if (enemyParentTransform != null)
+        if (enemyParentGameObject != null)
         {
-            Destroy(enemyParentTransform);
+            Destroy(enemyParentGameObject);
         }
     }
 

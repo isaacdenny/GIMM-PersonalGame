@@ -5,8 +5,9 @@ using UnityEngine;
 
 public class EnemyAggro : State
 {
-    [SerializeField] private float moveSpeed = 2f;
+    [SerializeField] private float moveSpeed = 20f;
     [SerializeField] private float attackRange = 7f;
+    Rigidbody2D rb;
 
     [SerializeField] Crystal crystal;
 
@@ -15,6 +16,7 @@ public class EnemyAggro : State
     {
         base.Enter();
         crystal = Crystal.Instance;
+        rb = EnemyBrain.rb;
     }
 
     // Update is called once per frame
@@ -26,7 +28,8 @@ public class EnemyAggro : State
 
     private void MoveToCrystal()
     {
-        EnemyBrain.rb.MovePosition(Vector2.MoveTowards(EnemyBrain.rb.position, crystal.transform.position, moveSpeed * Time.deltaTime));
+        Debug.Log("MovingTo" + crystal.transform.position);
+        rb.MovePosition(Vector2.MoveTowards(transform.position, crystal.transform.position, moveSpeed * Time.deltaTime));
     }
 
     private void CheckIfCanAttack()

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8745481840675732428}
   - component: {fileID: 8745481840675732429}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Attack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   complete: 0
+  attackDamage: 10
 --- !u!1 &8745481841269510593
 GameObject:
   m_ObjectHideFlags: 0
@@ -55,7 +56,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8745481841269510592}
   - component: {fileID: 8745481841269510595}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Stun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,7 +100,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8745481841625319227}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: States
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -135,7 +136,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8745481841669593518}
   - component: {fileID: 8745481841669593513}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Graphics
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -219,7 +220,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8745481841838135823}
   - component: {fileID: 8745481841838135820}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Dead
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -254,7 +255,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   complete: 0
-  enemyParentTransform: {fileID: 8745481842027544778}
+  enemyParentGameObject: {fileID: 8745481842027544778}
 --- !u!1 &8745481842027544778
 GameObject:
   m_ObjectHideFlags: 0
@@ -267,7 +268,7 @@ GameObject:
   - component: {fileID: 8745481842027544791}
   - component: {fileID: 8745481842027544788}
   - component: {fileID: 8745481842027544789}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -310,7 +311,7 @@ MonoBehaviour:
   Dead: {fileID: 8745481841838135820}
   mask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 256
   health: 0
   maxHealth: 20
   enemyMinPointValue: 100
@@ -356,11 +357,11 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_GravityScale: 0
+  m_Material: {fileID: 6200000, guid: c8dca31b1f5bc424ba36c2cb98ebd2d5, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!1 &8745481842413733306
 GameObject:
@@ -372,7 +373,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8745481842413733317}
   - component: {fileID: 8745481842413733316}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Aggro
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -407,4 +408,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   complete: 0
-  deAggroRange: 10
+  moveSpeed: 4
+  attackRange: 1.5
+  crystal: {fileID: 0}

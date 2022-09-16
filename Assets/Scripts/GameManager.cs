@@ -107,4 +107,8 @@ public class GameManager : MonoBehaviour
     {
         return gameTimer;
     }
+    internal bool GetLevelStatus()
+    {
+        return levelComplete;
+    }
 }
