@@ -411,6 +411,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   complete: 0
-  moveSpeed: 2
+  moveSpeed: 3
   attackRange: 0.33
   crystal: {fileID: 0}
