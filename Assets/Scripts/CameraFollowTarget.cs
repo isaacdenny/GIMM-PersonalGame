@@ -16,7 +16,7 @@ public class CameraFollowTarget : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         MoveToTarget();
     }
@@ -25,6 +25,7 @@ public class CameraFollowTarget : MonoBehaviour
     {
         if (target == null) return;
 
+        /*
         if (Vector2.Distance(transform.position, target.position) > 0f)
         {
             transform.position = Vector2.Lerp(transform.position, target.position, moveSpeed * Time.deltaTime);
@@ -37,6 +38,16 @@ public class CameraFollowTarget : MonoBehaviour
             {
                 transform.position = new Vector3(transform.position.x, 0, -10f);
             }
+        }
+        */
+
+        if (verticalFollow)
+        {
+            transform.position = new Vector3(target.position.x, target.position.y, -10f);
+        }
+        else
+        {
+            transform.position = new Vector3(target.position.x, 0, -10f);
         }
     }
 }
