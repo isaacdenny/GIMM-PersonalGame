@@ -9,16 +9,13 @@ public class PlayerIdle : State
     public override void Enter()
     {
         base.Enter();
-        PlayerBrain.rb.gravityScale = 0f;
-        PlayerBrain.animator.SetTrigger("Idle");
     }
 
     public override void Do()
     {
-        base.Do();
         if (PlayerInputHandler.CheckForMovementInput().magnitude != 0)
         {
-            PlayerBrain.Instance.Set(PlayerBrain.Instance.playerRun);
+            complete = true;
         }
     }
 }

@@ -18,15 +18,13 @@ public class PlayerRun : State
     public override void Enter()
     {
         base.Enter();
-        PlayerBrain.animator.SetTrigger("Run");
-        PlayerBrain.rb.gravityScale = 0f;
     }
     public override void Do()
     {
         
         if (Move(PlayerInputHandler.CheckForMovementInput()).magnitude < PlayerInputHandler.INPUTDEADZONE)
         {
-            PlayerBrain.Instance.Set(PlayerBrain.Instance.playerIdle);
+            complete = true;
         }
     }
 }

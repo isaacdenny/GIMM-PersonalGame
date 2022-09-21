@@ -10,7 +10,8 @@ public class PlayerBrain : StateMachine
 
     public static PlayerBrain Instance { get; private set; }
     public static Rigidbody2D rb { get; private set; }
-    public static Animator animator { get; private set; }
+    
+    [SerializeField] private Animator animator;
 
     void Awake()
     {
@@ -29,7 +30,6 @@ public class PlayerBrain : StateMachine
     {
         state = playerIdle;
         rb = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
     }
 
 
@@ -48,10 +48,12 @@ public class PlayerBrain : StateMachine
         if (state == playerRun)
         {
             Set(playerIdle);
+            animator.SetTrigger("Idle");
         }
         else if (state == playerIdle)
         {
             Set(playerRun);
+            animator.SetTrigger("Run");
         }
     }
 }

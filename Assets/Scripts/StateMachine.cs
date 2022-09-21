@@ -16,11 +16,13 @@ public abstract class StateMachine : MonoBehaviour
         if (state != null)
         {
             state.Do();
+
+            if (state.complete)
+            {
+                SetNextState();
+            }
         }
-        if (state.complete)
-        {
-            SetNextState();
-        }
+        
     }
 
     public void StateFixedUpdate()
@@ -28,12 +30,13 @@ public abstract class StateMachine : MonoBehaviour
         if (state != null)
         {
             state.FixedDo();
-        }
 
-        if (state.complete)
-        {
-            SetNextState();
+            if (state.complete)
+            {
+                SetNextState();
+            }
         }
+        
     }
 
     public void Set(State newState, bool overRide = false)

@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class PlayerShoot : MonoBehaviour
 {
@@ -19,7 +20,7 @@ public class PlayerShoot : MonoBehaviour
     void Update()
     {
         Shoot(PlayerInputHandler.CheckForShootInput());
-        RotateToMouse();
+        PlayerBrain.rb.rotation = Helpers.RotateToMouse();
     }
 
     internal void Shoot(bool shoot)
@@ -35,11 +36,5 @@ public class PlayerShoot : MonoBehaviour
         }
     }
 
-    internal void RotateToMouse()
-    {
-        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector2 lookDir = mousePos - PlayerBrain.rb.position;
-        float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
-        PlayerBrain.rb.rotation = angle;
-    }
+    
 }
