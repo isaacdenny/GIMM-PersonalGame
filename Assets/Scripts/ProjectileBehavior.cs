@@ -8,14 +8,14 @@ public class ProjectileBehavior : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         EnemyBrain enemy = collision.GetComponent<EnemyBrain>();
-        Crystal finish = collision.GetComponent<Crystal>();
+        Crystal crystal = collision.GetComponent<Crystal>();
         if (enemy != null)
         {
             enemy.TakeDamage(damage);
         }
-        else if (finish != null)
+        else if (crystal != null)
         {
-            finish.TakeDamage(damage);
+            crystal.TakeDamage(damage);
         }
         Destroy(gameObject);
     }
