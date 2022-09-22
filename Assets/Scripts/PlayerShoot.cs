@@ -8,12 +8,14 @@ public class PlayerShoot : MonoBehaviour
 {
     [Header("Components")]
     [SerializeField] private GameObject projectilePrefab;
+    [SerializeField] private GameObject muzzleFlashPrefab;
     [SerializeField] private Transform firePoint;
 
     [Header("Properties")]
     [SerializeField] float projectileSpeed = 20f;
     [SerializeField] private float fireRate = 10f;
     [SerializeField] private float damage = 10f;
+    [SerializeField] private float rotationOffset = -15f;
     private float timeToNextShoot = 0f;
 
     // Update is called once per frame
@@ -33,6 +35,10 @@ public class PlayerShoot : MonoBehaviour
             projectile.GetComponent<Rigidbody2D>().AddForce(projectileSpeed * firePoint.right, ForceMode2D.Impulse);
             projectile.GetComponent<ProjectileBehavior>().damage = damage;
             Destroy(projectile, 1f);
+
+            GameObject muzzleFlash = Instantiate(muzzleFlashPrefab, firePoint.position, transform.rotation);
+            muzzleFlash.transform.Rotate(0, 0, rotationOffset);
+            Destroy(muzzleFlash, 0.5f);
         }
     }
 

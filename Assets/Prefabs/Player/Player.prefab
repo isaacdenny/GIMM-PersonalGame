@@ -352,6 +352,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 3634705850929083309, guid: f11c3817d150c5d43893ac4d2052be5c,
     type: 3}
+  muzzleFlashPrefab: {fileID: 7194485840606029940, guid: a19c69e8d4152c84a9963db5d5ae329b,
+    type: 3}
   firePoint: {fileID: 8565076416347418124}
   projectileSpeed: 14
   fireRate: 10
@@ -690,7 +692,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -938209689
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 53fdf3c1c23759749a6d9befe9ea1c16, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
