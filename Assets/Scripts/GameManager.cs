@@ -18,6 +18,8 @@ public class GameManager : MonoBehaviour
     private bool gameTimerRunning = false;
 
     public static GameManager Instance { get; private set; }
+    public enum GameState { Win, Lose, Playing, InMenu}
+    private GameState gameState;
 
     void Awake()
     {
@@ -39,6 +41,7 @@ public class GameManager : MonoBehaviour
         }
 
         levelComplete = false;
+        gameState = GameState.Playing;
     }
 
     private void Start()
@@ -46,14 +49,15 @@ public class GameManager : MonoBehaviour
         InitWaveTimer();
     }
 
-    private void InitWaveTimer()
-    {
-        gameTimer = timeToWin;
-    }
-
     void Update()
     {
         CheckForWin();
+
+        if (gameState == GameState.Lose || gameState == GameState.Win)
+        {
+            levelComplete = true;
+            Time.timeScale = 0f;
+        }
     }
 
     private void CheckForWin()
@@ -62,8 +66,7 @@ public class GameManager : MonoBehaviour
 
         if (gameTimer <= 0f && !levelComplete && currentWave >= waveCount)
         {
-            Time.timeScale = 0f;
-            WinLevel();
+            SetGameState(GameState.Win);
             return;
         }
         else if (gameTimer <= 0f && !levelComplete && currentWave < waveCount)
@@ -72,17 +75,14 @@ public class GameManager : MonoBehaviour
         }
         gameTimer -= Time.deltaTime;
     }
-
     public void AddToScore(int scoreValue)
     {
         score += scoreValue;
     }
-
     public void SubtractFromScore(int scoreValue)
     {
         score -= scoreValue;
     }
-
     public void LoadNextLevel()
     {
         AsyncOperation operation = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
@@ -93,18 +93,6 @@ public class GameManager : MonoBehaviour
             Debug.Log(progress);
         }
     }
-
-    internal void WinLevel()
-    {
-        levelComplete = true;
-        InitWinScreen();
-    }
-
-    internal void LoseLevel()
-    {
-        levelComplete = true;
-        InitLoseScreen();
-    }
     public void StartNextWave()
     {
         if (gameTimerRunning) return;
@@ -114,15 +102,11 @@ public class GameManager : MonoBehaviour
         waveComplete = false;
     }
 
-    private void InitLoseScreen()
+    private void InitWaveTimer()
     {
-        Debug.Log("LoseScreenNotImplemented");
+        gameTimer = timeToWin;
     }
 
-    private void InitWinScreen()
-    {
-        Debug.Log("WinScreenNotImplemented");
-    }
     internal int GetScore()
     {
         return score;
@@ -150,5 +134,16 @@ public class GameManager : MonoBehaviour
     internal int GetWaveCount()
     {
         return waveCount;
+    }
+    internal void SetGameState(GameState newState)
+    {
+        if (newState != gameState)
+        {
+            gameState = newState;
+        }
+    }
+    internal GameState GetGameState()
+    {
+        return gameState;
     }
 }

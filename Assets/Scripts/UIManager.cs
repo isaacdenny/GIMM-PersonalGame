@@ -13,6 +13,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] TMP_Text waveCountText;
     [SerializeField] Slider crystalHealthSlider;
 
+    [SerializeField] Canvas loseScreenCanvas;
+    [SerializeField] Canvas WinScreenCanvas;
+
     public Crystal crystal;
     // Start is called before the first frame update
     void Start()
@@ -24,11 +27,24 @@ public class UIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        UpdateTimer();
-        UpdateCrystalHealthSlider();
+        GameManager.GameState gameState = GameManager.Instance.GetGameState();
 
-        scoreText.text = "Score: " + GameManager.Instance.GetScore();
-        waveText.text = "Wave: " + GameManager.Instance.GetCurrentWave();
+        if (gameState == GameManager.GameState.Playing)
+        {
+            UpdateTimer();
+            UpdateCrystalHealthSlider();
+
+            scoreText.text = "Score: " + GameManager.Instance.GetScore();
+            waveText.text = "Wave: " + GameManager.Instance.GetCurrentWave();
+        }
+        else if (gameState == GameManager.GameState.Lose)
+        {
+            InitLoseScreen();
+        }
+        else if (gameState == GameManager.GameState.Win)
+        {
+            InitWinScreen();
+        }
     }
 
     private void UpdateTimer()
@@ -50,8 +66,20 @@ public class UIManager : MonoBehaviour
     {
         if (crystal != null)
         {
-            Debug.Log(crystal.GetHealth());
+
             crystalHealthSlider.value = crystal.GetHealth() / 100f;
         }
+    }
+
+    private void InitLoseScreen()
+    {
+        loseScreenCanvas.enabled = true;
+        Time.timeScale = 0f;
+    }
+
+    private void InitWinScreen()
+    {
+        WinScreenCanvas.enabled = true;
+        Time.timeScale = 0f;
     }
 }
