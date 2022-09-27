@@ -52,7 +52,7 @@ MonoBehaviour:
   m_Intensity: 0.8
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 41c04d291991d73600000000d1246f65
+  m_ApplyToSortingLayers: 41c04d291991d73600000000
   m_LightCookieSprite: {fileID: 1237627853, guid: 80c51a3dc0dd59340a07c1c2c7c4f317,
     type: 3}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
@@ -191,7 +191,7 @@ MonoBehaviour:
   m_Intensity: 0.32
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 41c04d291991d73600000000d1246f65
+  m_ApplyToSortingLayers: 41c04d291991d73600000000670e14c8
   m_LightCookieSprite: {fileID: 1237627853, guid: 80c51a3dc0dd59340a07c1c2c7c4f317,
     type: 3}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
@@ -5122,6 +5122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 774517cc8f163ab4ba71481ffc8d44d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 0
   maxHealth: 100
 --- !u!61 &8584249579639202831
 BoxCollider2D:

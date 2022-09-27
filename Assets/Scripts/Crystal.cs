@@ -1,10 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Crystal : MonoBehaviour
 {
-    float health;
+    [SerializeField] float health;
     [SerializeField] float maxHealth = 100f;
 
     public static Crystal Instance { get; private set; }
@@ -34,5 +35,10 @@ public class Crystal : MonoBehaviour
         {
             GameManager.Instance.LoseLevel();
         }
+    }
+
+    internal float GetHealth()
+    {
+        return health;
     }
 }
