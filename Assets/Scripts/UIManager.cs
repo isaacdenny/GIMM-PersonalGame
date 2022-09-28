@@ -16,12 +16,17 @@ public class UIManager : MonoBehaviour
     [SerializeField] Canvas loseScreenCanvas;
     [SerializeField] Canvas WinScreenCanvas;
 
+    [HideInInspector]
     public Crystal crystal;
+
+    private Canvas canvas;
+
     // Start is called before the first frame update
     void Start()
     {
         waveCountText.text = "Total Waves: " + GameManager.Instance.GetWaveCount();
         crystal = Crystal.Instance;
+        canvas = GetComponent<Canvas>();
     }
 
     // Update is called once per frame
@@ -31,6 +36,8 @@ public class UIManager : MonoBehaviour
 
         if (gameState == GameManager.GameState.Playing)
         {
+            canvas.enabled = true;
+
             UpdateTimer();
             UpdateCrystalHealthSlider();
 
@@ -73,12 +80,14 @@ public class UIManager : MonoBehaviour
 
     private void InitLoseScreen()
     {
+        canvas.enabled = false;
         loseScreenCanvas.enabled = true;
         Time.timeScale = 0f;
     }
 
     private void InitWinScreen()
     {
+        canvas.enabled = false;
         WinScreenCanvas.enabled = true;
         Time.timeScale = 0f;
     }
