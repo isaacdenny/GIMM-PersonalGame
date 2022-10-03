@@ -4,18 +4,19 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour
+public class GameManager : StateMachine
 {
 
     [SerializeField] List<GameObject> dontDestroyList = new();
+    [SerializeField] float timeToWin = 60f;
+    [SerializeField] int waveCount = 3;
+    [SerializeField] private float gameTimer = 0f;
+
+    private bool gameTimerRunning = false;
     private bool levelComplete;
     private bool waveComplete;
     private int score = 0;
     private int currentWave = 0;
-    [SerializeField] float timeToWin = 60f;
-    [SerializeField] int waveCount = 3;
-    [SerializeField] private float gameTimer = 0f;
-    private bool gameTimerRunning = false;
 
     public static GameManager Instance { get; private set; }
     public enum GameState { Win, Lose, Playing, InMenu}
