@@ -29,14 +29,6 @@ public class Crystal : MonoBehaviour
         health -= damage;
     }
 
-    private void Update()
-    {
-        if (health <= 0f)
-        {
-            GameManager.Instance.SetGameState(GameManager.GameState.Lose);
-        }
-    }
-
     internal float GetHealth()
     {
         return health;

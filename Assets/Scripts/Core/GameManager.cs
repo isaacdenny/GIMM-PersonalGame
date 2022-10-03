@@ -8,19 +8,17 @@ public class GameManager : StateMachine
 {
 
     [SerializeField] List<GameObject> dontDestroyList = new();
-    [SerializeField] float timeToWin = 60f;
-    [SerializeField] int waveCount = 3;
-    [SerializeField] private float gameTimer = 0f;
 
-    private bool gameTimerRunning = false;
+    [SerializeField] int waveCount = 3;
+
     private bool levelComplete;
     private bool waveComplete;
     private int score = 0;
     private int currentWave = 0;
 
     public static GameManager Instance { get; private set; }
-    public enum GameState { Win, Lose, Playing, InMenu}
-    private GameState gameState;
+
+    public State playing, lose, win, inMenu;
 
     void Awake()
     {
@@ -42,40 +40,17 @@ public class GameManager : StateMachine
         }
 
         levelComplete = false;
-        gameState = GameState.Playing;
     }
 
     private void Start()
     {
-        InitWaveTimer();
     }
 
     void Update()
     {
-        CheckForWin();
-
-        if (gameState == GameState.Lose || gameState == GameState.Win)
-        {
-            levelComplete = true;
-            Time.timeScale = 0f;
-        }
+        StateUpdate();
     }
 
-    private void CheckForWin()
-    {
-        if (!gameTimerRunning) return;
-
-        if (gameTimer <= 0f && !levelComplete && currentWave >= waveCount)
-        {
-            SetGameState(GameState.Win);
-            return;
-        }
-        else if (gameTimer <= 0f && !levelComplete && currentWave < waveCount)
-        {
-            gameTimerRunning = false;
-        }
-        gameTimer -= Time.deltaTime;
-    }
     public void AddToScore(int scoreValue)
     {
         score += scoreValue;
@@ -94,28 +69,13 @@ public class GameManager : StateMachine
             Debug.Log(progress);
         }
     }
-    public void StartNextWave()
-    {
-        if (gameTimerRunning) return;
-        currentWave++;
-        InitWaveTimer();
-        gameTimerRunning = true;
-        waveComplete = false;
-    }
-
-    private void InitWaveTimer()
-    {
-        gameTimer = timeToWin;
-    }
+ 
 
     internal int GetScore()
     {
         return score;
     }
-    internal float GetTimer()
-    {
-        return gameTimer;
-    }
+
     internal bool GetLevelStatus()
     {
         return levelComplete;
@@ -124,10 +84,7 @@ public class GameManager : StateMachine
     {
         return waveComplete;
     }
-    internal bool GetTimerStatus()
-    {
-        return gameTimerRunning;
-    }
+
     internal int GetCurrentWave()
     {
         return currentWave;
@@ -135,16 +92,5 @@ public class GameManager : StateMachine
     internal int GetWaveCount()
     {
         return waveCount;
-    }
-    internal void SetGameState(GameState newState)
-    {
-        if (newState != gameState)
-        {
-            gameState = newState;
-        }
-    }
-    internal GameState GetGameState()
-    {
-        return gameState;
     }
 }

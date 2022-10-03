@@ -20,7 +20,7 @@ public class EnemySpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameManager.Instance.GetTimerStatus() && Time.time >= timeToNextSpawn)
+        if (Time.time >= timeToNextSpawn) //and if wave is running
         {
             timeToNextSpawn = Time.time + 1 / spawnRate;
             SpawnEnemy();

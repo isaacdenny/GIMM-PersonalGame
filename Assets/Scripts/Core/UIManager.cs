@@ -20,21 +20,22 @@ public class UIManager : MonoBehaviour
     public Crystal crystal;
 
     private Canvas canvas;
+    private WaveState waveState;
+    internal bool isWave = false;
 
-    // Start is called before the first frame update
+
     void Start()
     {
         waveCountText.text = "Total Waves: " + GameManager.Instance.GetWaveCount();
         crystal = Crystal.Instance;
         canvas = GetComponent<Canvas>();
+        waveState = (WaveState)GameManager.Instance.playing;
     }
 
-    // Update is called once per frame
+
     void Update()
     {
-        GameManager.GameState gameState = GameManager.Instance.GetGameState();
-
-        if (gameState == GameManager.GameState.Playing)
+        if (isWave)
         {
             canvas.enabled = true;
 
@@ -44,22 +45,14 @@ public class UIManager : MonoBehaviour
             scoreText.text = "Score: " + GameManager.Instance.GetScore();
             waveText.text = "Wave: " + GameManager.Instance.GetCurrentWave();
         }
-        else if (gameState == GameManager.GameState.Lose)
-        {
-            InitLoseScreen();
-        }
-        else if (gameState == GameManager.GameState.Win)
-        {
-            InitWinScreen();
-        }
     }
 
     private void UpdateTimer()
     {
-        int minuteValue = (int)(GameManager.Instance.GetTimer() / 60f);
-        int secondValue = Mathf.RoundToInt((GameManager.Instance.GetTimer() % 60f));
+        int minuteValue = (int)(waveState.GetTimer() / 60f);
+        int secondValue = Mathf.RoundToInt((waveState.GetTimer() % 60f));
 
-        if (GameManager.Instance.GetTimer() <= 60)
+        if (waveState.GetTimer() <= 60)
         {
             timerText.text = secondValue.ToString();
         }
@@ -73,7 +66,6 @@ public class UIManager : MonoBehaviour
     {
         if (crystal != null)
         {
-
             crystalHealthSlider.value = crystal.GetHealth() / 100f;
         }
     }
