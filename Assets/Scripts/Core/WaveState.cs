@@ -5,9 +5,7 @@ using UnityEngine;
 public class WaveState : State
 {
     [SerializeField] private UIManager uiManager;
-
-    int waveCount = GameManager.Instance.GetWaveCount();
-    int currentWave = GameManager.Instance.GetCurrentWave();
+    [SerializeField] private EnemySpawner enemySpawner;
 
     [SerializeField] float timeToWin = 60f;
     [SerializeField] private float gameTimer = 0f;
@@ -29,6 +27,7 @@ public class WaveState : State
         base.Exit();
         waveTimerRunning = false;
         uiManager.isWave = false;
+        enemySpawner.isWave = false;
     }
     private void CheckForWin()
     {
@@ -54,6 +53,7 @@ public class WaveState : State
         gameTimer = timeToWin;
         waveTimerRunning = true;
         uiManager.isWave = true;
+        enemySpawner.isWave = true;
     }
     internal float GetTimer()
     {

@@ -11,6 +11,7 @@ public class GameManager : StateMachine
 
     [SerializeField] int waveCount = 3;
 
+
     private bool levelComplete;
     private bool waveComplete;
     private int score = 0;
@@ -18,7 +19,7 @@ public class GameManager : StateMachine
 
     public static GameManager Instance { get; private set; }
 
-    public State playing, lose, win, inMenu;
+    public State waveState, prepState, loseState, winState, inMenuState;
 
     void Awake()
     {
@@ -40,10 +41,7 @@ public class GameManager : StateMachine
         }
 
         levelComplete = false;
-    }
-
-    private void Start()
-    {
+        Set(prepState);
     }
 
     void Update()
@@ -69,7 +67,17 @@ public class GameManager : StateMachine
             Debug.Log(progress);
         }
     }
- 
+    public override void SetNextState()
+    {
+        if (state == waveState)
+        {
+            Set(prepState);
+        }
+        else if (state == prepState)
+        {
+            Set(waveState);
+        }
+    }
 
     internal int GetScore()
     {

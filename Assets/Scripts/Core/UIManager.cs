@@ -29,7 +29,7 @@ public class UIManager : MonoBehaviour
         waveCountText.text = "Total Waves: " + GameManager.Instance.GetWaveCount();
         crystal = Crystal.Instance;
         canvas = GetComponent<Canvas>();
-        waveState = (WaveState)GameManager.Instance.playing;
+        waveState = (WaveState)GameManager.Instance.waveState;
     }
 
 
@@ -40,11 +40,12 @@ public class UIManager : MonoBehaviour
             canvas.enabled = true;
 
             UpdateTimer();
-            UpdateCrystalHealthSlider();
 
             scoreText.text = "Score: " + GameManager.Instance.GetScore();
             waveText.text = "Wave: " + GameManager.Instance.GetCurrentWave();
         }
+
+        UpdateCrystalHealthSlider();
     }
 
     private void UpdateTimer()

@@ -10,6 +10,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] List<Transform> spawnPositions = new();
 
     private float timeToNextSpawn = 0f;
+    internal bool isWave = false;
 
     // Start is called before the first frame update
     void Start()
@@ -20,7 +21,7 @@ public class EnemySpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Time.time >= timeToNextSpawn) //and if wave is running
+        if (Time.time >= timeToNextSpawn && isWave) //and if wave is running
         {
             timeToNextSpawn = Time.time + 1 / spawnRate;
             SpawnEnemy();
