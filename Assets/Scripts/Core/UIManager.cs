@@ -20,29 +20,22 @@ public class UIManager : MonoBehaviour
     public Crystal crystal;
 
     private Canvas canvas;
-    internal bool isWave = false;
 
     void Start()
     {
         waveCountText.text = "Total Waves: " + GameManager.Instance.GetWaveCount();
         crystal = Crystal.Instance;
         canvas = GetComponent<Canvas>();
+        canvas.enabled = true;
     }
     void Update()
     {
-        if (isWave)
-        {
-            canvas.enabled = true;
-        }
-
         UpdateCrystalHealthSlider();
     }
     internal void UpdateWave(int wave) => waveText.text = "Wave: " + wave;
     internal void UpdateScore(int score) => scoreText.text = "Score: " + score;
     internal void UpdateTimer(float timer)
     {
-        if (!isWave) return;
-
         int minuteValue = (int)(timer / 60f);
         int secondValue = Mathf.RoundToInt((timer % 60f));
 

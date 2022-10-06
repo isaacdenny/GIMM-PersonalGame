@@ -9,7 +9,6 @@ public class WaveState : State
     [SerializeField] float timeToWin = 60f;
     [SerializeField] private float gameTimer = 0f;
 
-    private bool waveTimerRunning = false;
     private UIManager uiManager;
 
     public override void Enter()
@@ -24,14 +23,10 @@ public class WaveState : State
     public override void Exit()
     {
         base.Exit();
-        waveTimerRunning = false;
-        uiManager.isWave = false;
         enemySpawner.isWave = false;
     }
     private void EvaluateWaveStatus()
     {
-        if (!waveTimerRunning) return;
-
         gameTimer -= Time.deltaTime;
         uiManager.UpdateTimer(gameTimer);
 
@@ -50,18 +45,11 @@ public class WaveState : State
     private void InitWave()
     {
         uiManager = GameManager.Instance.GetUIManager();
-        GameManager.Instance.SetCurrentWave();
         gameTimer = timeToWin;
-        waveTimerRunning = true;
-        uiManager.isWave = true;
         enemySpawner.isWave = true;
     }
     internal float GetTimer()
     {
         return gameTimer;
-    }
-    internal bool GetTimerStatus()
-    {
-        return waveTimerRunning;
     }
 }

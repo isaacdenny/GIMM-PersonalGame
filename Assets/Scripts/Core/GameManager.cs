@@ -11,7 +11,7 @@ public class GameManager : StateMachine
     [SerializeField] int waveCount = 3;
     [SerializeField] private UIManager uiManager;
     public static GameManager Instance { get; private set; }
-    public State waveState, prepState, loseState, winState, inMenuState;
+    public State waveState, prepState, loseState, winState;
 
     private bool levelComplete;
     private bool waveComplete;
@@ -79,10 +79,10 @@ public class GameManager : StateMachine
         }
         else if (state == prepState && currentWave < waveCount)
         {
-            currentWave++;
+            SetCurrentWave();
             Set(waveState);
         }
-        else if (state == prepState && currentWave == waveCount)
+        else if (state == waveState && currentWave == waveCount)
         {
             Set(winState);
         }
@@ -91,7 +91,12 @@ public class GameManager : StateMachine
     internal bool GetLevelStatus() => levelComplete;
     internal bool GetWaveStatus() => waveComplete;
     internal int GetCurrentWave() => currentWave;
-    internal void SetCurrentWave() => currentWave++;
+    internal void SetCurrentWave()
+    {
+        currentWave ++;
+        uiManager.UpdateWave(currentWave);
+    }
+
     internal int GetWaveCount() => waveCount;
     internal UIManager GetUIManager() => uiManager;
 }
