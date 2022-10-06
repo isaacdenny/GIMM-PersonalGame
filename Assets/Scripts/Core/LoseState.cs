@@ -12,7 +12,6 @@ public class LoseState : State
         uiManager = GameManager.Instance.GetUIManager();
         InitLoseLevel();
     }
-
     private void InitLoseLevel()
     {
         Time.timeScale = 0f;

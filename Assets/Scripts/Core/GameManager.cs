@@ -91,6 +91,7 @@ public class GameManager : StateMachine
     internal bool GetLevelStatus() => levelComplete;
     internal bool GetWaveStatus() => waveComplete;
     internal int GetCurrentWave() => currentWave;
+    internal void SetCurrentWave() => currentWave++;
     internal int GetWaveCount() => waveCount;
     internal UIManager GetUIManager() => uiManager;
 }

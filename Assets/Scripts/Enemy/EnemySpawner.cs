@@ -12,22 +12,14 @@ public class EnemySpawner : MonoBehaviour
     private float timeToNextSpawn = 0f;
     internal bool isWave = false;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
-        if (Time.time >= timeToNextSpawn && isWave) //and if wave is running
+        if (Time.time >= timeToNextSpawn && isWave)
         {
             timeToNextSpawn = Time.time + 1 / spawnRate;
             SpawnEnemy();
         }
     }
-
     private void SpawnEnemy()
     {
         if (enemyPrefab == null) return;
@@ -35,7 +27,6 @@ public class EnemySpawner : MonoBehaviour
         EnemyBrain enemy = Instantiate(enemyPrefab, spawnPos, Quaternion.identity).GetComponent<EnemyBrain>();
         enemy.InitEnemy();
     }
-
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;

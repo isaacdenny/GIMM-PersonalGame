@@ -2,17 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WinState : MonoBehaviour
+public class WinState : State
 {
-    // Start is called before the first frame update
-    void Start()
+    private UIManager uiManager;
+    public override void Enter()
     {
-        
+        base.Enter();
+        uiManager = GameManager.Instance.GetUIManager();
+        InitWinLevel();
     }
-
-    // Update is called once per frame
-    void Update()
+    private void InitWinLevel()
     {
-        
+        Time.timeScale = 0f;
+        uiManager.InitWinScreen();
     }
 }

@@ -15,14 +15,12 @@ public class WaveState : State
     public override void Enter()
     {
         base.Enter();
-        uiManager = GameManager.Instance.GetUIManager();
         InitWave();
     }
     public override void Do()
     {
         EvaluateWaveStatus();
     }
-
     public override void Exit()
     {
         base.Exit();
@@ -49,9 +47,10 @@ public class WaveState : State
         }
 
     }
-
     private void InitWave()
     {
+        uiManager = GameManager.Instance.GetUIManager();
+        GameManager.Instance.SetCurrentWave();
         gameTimer = timeToWin;
         waveTimerRunning = true;
         uiManager.isWave = true;

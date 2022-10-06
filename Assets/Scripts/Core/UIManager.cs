@@ -22,15 +22,12 @@ public class UIManager : MonoBehaviour
     private Canvas canvas;
     internal bool isWave = false;
 
-
     void Start()
     {
         waveCountText.text = "Total Waves: " + GameManager.Instance.GetWaveCount();
         crystal = Crystal.Instance;
         canvas = GetComponent<Canvas>();
     }
-
-
     void Update()
     {
         if (isWave)
@@ -40,11 +37,8 @@ public class UIManager : MonoBehaviour
 
         UpdateCrystalHealthSlider();
     }
-
     internal void UpdateWave(int wave) => waveText.text = "Wave: " + wave;
-
     internal void UpdateScore(int score) => scoreText.text = "Score: " + score;
-
     internal void UpdateTimer(float timer)
     {
         if (!isWave) return;
@@ -61,20 +55,17 @@ public class UIManager : MonoBehaviour
             timerText.text = minuteValue + ":" + secondValue;
         }
     }
-
     private void UpdateCrystalHealthSlider()
     {
         if (crystal == null) return;
 
         crystalHealthSlider.value = crystal.GetHealth() / 100f;
     }
-
     internal void InitLoseScreen()
     {
         canvas.enabled = false;
         loseScreenCanvas.enabled = true;
     }
-
     internal void InitWinScreen()
     {
         canvas.enabled = false;
