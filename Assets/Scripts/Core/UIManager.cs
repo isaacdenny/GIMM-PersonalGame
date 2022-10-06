@@ -20,7 +20,6 @@ public class UIManager : MonoBehaviour
     public Crystal crystal;
 
     private Canvas canvas;
-    private WaveState waveState;
     internal bool isWave = false;
 
 
@@ -29,7 +28,6 @@ public class UIManager : MonoBehaviour
         waveCountText.text = "Total Waves: " + GameManager.Instance.GetWaveCount();
         crystal = Crystal.Instance;
         canvas = GetComponent<Canvas>();
-        waveState = (WaveState)GameManager.Instance.waveState;
     }
 
 
@@ -38,22 +36,23 @@ public class UIManager : MonoBehaviour
         if (isWave)
         {
             canvas.enabled = true;
-
-            UpdateTimer();
-
-            scoreText.text = "Score: " + GameManager.Instance.GetScore();
-            waveText.text = "Wave: " + GameManager.Instance.GetCurrentWave();
         }
 
         UpdateCrystalHealthSlider();
     }
 
-    private void UpdateTimer()
-    {
-        int minuteValue = (int)(waveState.GetTimer() / 60f);
-        int secondValue = Mathf.RoundToInt((waveState.GetTimer() % 60f));
+    internal void UpdateWave(int wave) => waveText.text = "Wave: " + wave;
 
-        if (waveState.GetTimer() <= 60)
+    internal void UpdateScore(int score) => scoreText.text = "Score: " + score;
+
+    internal void UpdateTimer(float timer)
+    {
+        if (!isWave) return;
+
+        int minuteValue = (int)(timer / 60f);
+        int secondValue = Mathf.RoundToInt((timer % 60f));
+
+        if (timer <= 60)
         {
             timerText.text = secondValue.ToString();
         }
@@ -65,23 +64,20 @@ public class UIManager : MonoBehaviour
 
     private void UpdateCrystalHealthSlider()
     {
-        if (crystal != null)
-        {
-            crystalHealthSlider.value = crystal.GetHealth() / 100f;
-        }
+        if (crystal == null) return;
+
+        crystalHealthSlider.value = crystal.GetHealth() / 100f;
     }
 
-    private void InitLoseScreen()
+    internal void InitLoseScreen()
     {
         canvas.enabled = false;
         loseScreenCanvas.enabled = true;
-        Time.timeScale = 0f;
     }
 
-    private void InitWinScreen()
+    internal void InitWinScreen()
     {
         canvas.enabled = false;
         WinScreenCanvas.enabled = true;
-        Time.timeScale = 0f;
     }
 }

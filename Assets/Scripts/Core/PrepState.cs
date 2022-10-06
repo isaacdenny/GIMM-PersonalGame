@@ -4,8 +4,5 @@ using UnityEngine;
 
 public class PrepState : State
 {
-    public void ReadyUp()
-    {
-        complete = true;
-    }
+    public void ReadyUp() => complete = true;
 }

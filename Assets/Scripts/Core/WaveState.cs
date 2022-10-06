@@ -4,22 +4,23 @@ using UnityEngine;
 
 public class WaveState : State
 {
-    [SerializeField] private UIManager uiManager;
     [SerializeField] private EnemySpawner enemySpawner;
 
     [SerializeField] float timeToWin = 60f;
     [SerializeField] private float gameTimer = 0f;
 
     private bool waveTimerRunning = false;
+    private UIManager uiManager;
 
     public override void Enter()
     {
         base.Enter();
+        uiManager = GameManager.Instance.GetUIManager();
         InitWave();
     }
     public override void Do()
     {
-        CheckForWin();
+        EvaluateWaveStatus();
     }
 
     public override void Exit()
@@ -29,18 +30,19 @@ public class WaveState : State
         uiManager.isWave = false;
         enemySpawner.isWave = false;
     }
-    private void CheckForWin()
+    private void EvaluateWaveStatus()
     {
         if (!waveTimerRunning) return;
 
         gameTimer -= Time.deltaTime;
+        uiManager.UpdateTimer(gameTimer);
 
-        if (gameTimer <= 0f)
+        if (Crystal.Instance.GetHealth() <= 0f)
         {
             complete = true;
             return;
         }
-        else if (Crystal.Instance.GetHealth() <= 0f)
+        else if (gameTimer <= 0f)
         {
             complete = true;
             return;

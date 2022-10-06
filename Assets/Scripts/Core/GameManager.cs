@@ -8,18 +8,16 @@ public class GameManager : StateMachine
 {
 
     [SerializeField] List<GameObject> dontDestroyList = new();
-
     [SerializeField] int waveCount = 3;
-
+    [SerializeField] private UIManager uiManager;
+    public static GameManager Instance { get; private set; }
+    public State waveState, prepState, loseState, winState, inMenuState;
 
     private bool levelComplete;
     private bool waveComplete;
     private int score = 0;
     private int currentWave = 0;
 
-    public static GameManager Instance { get; private set; }
-
-    public State waveState, prepState, loseState, winState, inMenuState;
 
     void Awake()
     {
@@ -52,10 +50,12 @@ public class GameManager : StateMachine
     public void AddToScore(int scoreValue)
     {
         score += scoreValue;
+        uiManager.UpdateScore(score);
     }
     public void SubtractFromScore(int scoreValue)
     {
         score -= scoreValue;
+        uiManager.UpdateScore(score);
     }
     public void LoadNextLevel()
     {
@@ -69,36 +69,28 @@ public class GameManager : StateMachine
     }
     public override void SetNextState()
     {
-        if (state == waveState)
+        if (state == waveState && Crystal.Instance.GetHealth() > 0f)
         {
             Set(prepState);
         }
-        else if (state == prepState)
+        else if (state == waveState && Crystal.Instance.GetHealth() <= 0f)
         {
+            Set(loseState);
+        }
+        else if (state == prepState && currentWave < waveCount)
+        {
+            currentWave++;
             Set(waveState);
         }
+        else if (state == prepState && currentWave == waveCount)
+        {
+            Set(winState);
+        }
     }
-
-    internal int GetScore()
-    {
-        return score;
-    }
-
-    internal bool GetLevelStatus()
-    {
-        return levelComplete;
-    }
-    internal bool GetWaveStatus()
-    {
-        return waveComplete;
-    }
-
-    internal int GetCurrentWave()
-    {
-        return currentWave;
-    }
-    internal int GetWaveCount()
-    {
-        return waveCount;
-    }
+    internal int GetScore() => score;
+    internal bool GetLevelStatus() => levelComplete;
+    internal bool GetWaveStatus() => waveComplete;
+    internal int GetCurrentWave() => currentWave;
+    internal int GetWaveCount() => waveCount;
+    internal UIManager GetUIManager() => uiManager;
 }

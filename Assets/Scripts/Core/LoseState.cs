@@ -1,18 +1,21 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LoseState : MonoBehaviour
+public class LoseState : State
 {
-    // Start is called before the first frame update
-    void Start()
+    private UIManager uiManager;
+    public override void Enter()
     {
-        
+        base.Enter();
+        uiManager = GameManager.Instance.GetUIManager();
+        InitLoseLevel();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void InitLoseLevel()
     {
-        
+        Time.timeScale = 0f;
+        uiManager.InitLoseScreen();
     }
 }
