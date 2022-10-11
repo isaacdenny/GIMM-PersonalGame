@@ -1843,7 +1843,7 @@ MonoBehaviour:
   state: {fileID: 0}
   dontDestroyList:
   - {fileID: 871198881}
-  - {fileID: 0}
+  - {fileID: 1201508663}
   - {fileID: 1546820546}
   waveCount: 1
   uiManager: {fileID: 1546820548}
