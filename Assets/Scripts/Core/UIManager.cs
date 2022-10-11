@@ -13,20 +13,33 @@ public class UIManager : MonoBehaviour
     [SerializeField] TMP_Text waveCountText;
     [SerializeField] Slider crystalHealthSlider;
 
+    [SerializeField] Canvas mainUICanvas;
+    [SerializeField] Canvas winScreenCanvas;
     [SerializeField] Canvas loseScreenCanvas;
-    [SerializeField] Canvas WinScreenCanvas;
 
     [HideInInspector]
     public Crystal crystal;
 
-    private Canvas canvas;
+    public static UIManager Instance { get; private set; }
 
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else if (Instance != null)
+        {
+            Destroy(Instance.gameObject);
+            Instance = this;
+        }
+    }
     void Start()
     {
         waveCountText.text = "Total Waves: " + GameManager.Instance.GetWaveCount();
         crystal = Crystal.Instance;
-        canvas = GetComponent<Canvas>();
-        canvas.enabled = true;
+        mainUICanvas.enabled = true;
     }
     void Update()
     {
@@ -56,12 +69,24 @@ public class UIManager : MonoBehaviour
     }
     internal void InitLoseScreen()
     {
-        canvas.enabled = false;
+        mainUICanvas.enabled = false;
         loseScreenCanvas.enabled = true;
     }
     internal void InitWinScreen()
     {
-        canvas.enabled = false;
-        WinScreenCanvas.enabled = true;
+        mainUICanvas.enabled = false;
+        winScreenCanvas.enabled = true;
+    }
+
+    internal void CloseLoseScreen()
+    {
+        mainUICanvas.enabled = true;
+        loseScreenCanvas.enabled = false;
+    }
+
+    internal void CloseWinScreen()
+    {
+        mainUICanvas.enabled = true;
+        winScreenCanvas.enabled = false;
     }
 }

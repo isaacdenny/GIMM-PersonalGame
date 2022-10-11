@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class PlayerBrain : StateMachine
 {
-    public State playerDash, playerIdle, playerRun, playerDead, playerStun;
+    public State playerIdle, playerRun, playerDead, playerStun;
 
     public static PlayerBrain Instance { get; private set; }
     public static Rigidbody2D rb { get; private set; }
@@ -19,9 +19,9 @@ public class PlayerBrain : StateMachine
         {
             Instance = this;
         }
-        else if (Instance != null)
+        else if (Instance != null && Instance != this)
         {
-            Destroy(Instance);
+            Destroy(Instance.gameObject);
             Instance = this;
         }
     }

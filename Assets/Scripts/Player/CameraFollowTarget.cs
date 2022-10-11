@@ -9,16 +9,26 @@ public class CameraFollowTarget : MonoBehaviour
     //[SerializeField] private float radius = 1f;
     [SerializeField] private bool verticalFollow = false;
 
+    public static CameraFollowTarget Instance { get; private set; }
+
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else if (Instance != null && Instance != this)
+        {
+            Destroy(Instance.gameObject);
+            Instance = this;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        MoveToTarget();
+        //MoveToTarget();
     }
 
     private void MoveToTarget()

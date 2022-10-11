@@ -17,4 +17,9 @@ public class LoseState : State
         Time.timeScale = 0f;
         uiManager.InitLoseScreen();
     }
+
+    public override void Exit()
+    {
+        uiManager.CloseLoseScreen();
+    }
 }

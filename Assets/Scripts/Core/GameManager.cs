@@ -27,7 +27,7 @@ public class GameManager : StateMachine
         }
         else if (Instance != null && Instance != this)
         {
-            Destroy(Instance);
+            Destroy(Instance.gameObject);
             Instance = this;
         }
 
@@ -39,7 +39,20 @@ public class GameManager : StateMachine
         }
 
         levelComplete = false;
+    }
+
+    private void Start()
+    {
+        InitLevel();
+    }
+
+    private void InitLevel()
+    {
         Set(prepState);
+        Time.timeScale = 1.0f;
+        score = 0;
+        currentWave = 0;
+        Debug.Log(levelComplete);
     }
 
     void Update()
@@ -61,19 +74,37 @@ public class GameManager : StateMachine
     {
         AsyncOperation operation = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
 
-        while (!operation.isDone)
-        {
-            float progress = operation.progress;
-            Debug.Log(progress);
-        }
+        //while (!operation.isDone)
+        //{
+        //    float progress = operation.progress;
+        //    Debug.Log(progress);
+        //}
+        InitLevel();
+    }
+    public void ReloadLevel()
+    {
+        AsyncOperation operation = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
+
+        //while (!operation.isDone)
+        //{
+        //    float progress = operation.progress;
+        //    Debug.Log(progress);
+        //}
+        InitLevel();
     }
     public override void SetNextState()
     {
-        if (state == waveState && Crystal.Instance.GetHealth() > 0f)
+        float crystalHealthThisFrame = Crystal.Instance.GetHealth();
+
+        if (state == waveState && currentWave == waveCount && crystalHealthThisFrame > 0)
+        {
+            Set(winState);
+        }
+        else if (state == waveState && crystalHealthThisFrame > 0f)
         {
             Set(prepState);
         }
-        else if (state == waveState && Crystal.Instance.GetHealth() <= 0f)
+        else if (state == waveState && crystalHealthThisFrame <= 0f)
         {
             Set(loseState);
         }
@@ -82,10 +113,7 @@ public class GameManager : StateMachine
             SetCurrentWave();
             Set(waveState);
         }
-        else if (state == waveState && currentWave == waveCount)
-        {
-            Set(winState);
-        }
+        
     }
     internal int GetScore() => score;
     internal bool GetLevelStatus() => levelComplete;

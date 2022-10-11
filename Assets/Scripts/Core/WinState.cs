@@ -16,4 +16,9 @@ public class WinState : State
         Time.timeScale = 0f;
         uiManager.InitWinScreen();
     }
+
+    public override void Exit()
+    {
+        uiManager.CloseWinScreen();
+    }
 }

@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class WaveState : State
 {
-    [SerializeField] private EnemySpawner enemySpawner;
 
     [SerializeField] float timeToWin = 60f;
     [SerializeField] private float gameTimer = 0f;
 
+    private EnemySpawner enemySpawner;
     private UIManager uiManager;
 
     public override void Enter()
@@ -45,6 +45,7 @@ public class WaveState : State
     private void InitWave()
     {
         uiManager = GameManager.Instance.GetUIManager();
+        enemySpawner = FindObjectOfType<EnemySpawner>();
         gameTimer = timeToWin;
         enemySpawner.isWave = true;
     }
