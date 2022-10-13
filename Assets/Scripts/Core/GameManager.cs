@@ -8,12 +8,10 @@ public class GameManager : StateMachine
 {
 
     [SerializeField] List<GameObject> dontDestroyList = new();
-    [SerializeField] int waveCount = 3;
     [SerializeField] private UIManager uiManager;
     public static GameManager Instance { get; private set; }
-    public State waveState, prepState, loseState, winState;
+    public State waveState, prepState, endState;
 
-    private bool levelComplete;
     private bool waveComplete;
     private int score = 0;
     private int currentWave = 0;
@@ -37,8 +35,6 @@ public class GameManager : StateMachine
         {
             DontDestroyOnLoad(go);
         }
-
-        levelComplete = false;
     }
 
     private void Start()
@@ -52,7 +48,6 @@ public class GameManager : StateMachine
         Time.timeScale = 1.0f;
         score = 0;
         currentWave = 0;
-        Debug.Log(levelComplete);
     }
 
     void Update()
@@ -96,19 +91,15 @@ public class GameManager : StateMachine
     {
         float crystalHealthThisFrame = Crystal.Instance.GetHealth();
 
-        if (state == waveState && currentWave == waveCount && crystalHealthThisFrame > 0)
-        {
-            Set(winState);
-        }
-        else if (state == waveState && crystalHealthThisFrame > 0f)
+        if (state == waveState && crystalHealthThisFrame > 0f)
         {
             Set(prepState);
         }
         else if (state == waveState && crystalHealthThisFrame <= 0f)
         {
-            Set(loseState);
+            Set(endState);
         }
-        else if (state == prepState && currentWave < waveCount)
+        else if (state == prepState)
         {
             SetCurrentWave();
             Set(waveState);
@@ -116,7 +107,6 @@ public class GameManager : StateMachine
         
     }
     internal int GetScore() => score;
-    internal bool GetLevelStatus() => levelComplete;
     internal bool GetWaveStatus() => waveComplete;
     internal int GetCurrentWave() => currentWave;
     internal void SetCurrentWave()
@@ -124,7 +114,5 @@ public class GameManager : StateMachine
         currentWave ++;
         uiManager.UpdateWave(currentWave);
     }
-
-    internal int GetWaveCount() => waveCount;
     internal UIManager GetUIManager() => uiManager;
 }

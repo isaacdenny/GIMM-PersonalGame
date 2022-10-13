@@ -28,8 +28,10 @@ public class EnemyAggro : State
 
     private void MoveToCrystal()
     {
-        //Debug.Log("MovingTo" + crystal.transform.position);
-        rb.MovePosition(Vector2.MoveTowards(transform.position, crystal.transform.position, moveSpeed * Time.deltaTime));
+        if (rb != null)
+        {
+            rb.MovePosition(Vector2.MoveTowards(transform.position, crystal.transform.position, moveSpeed * Time.deltaTime));
+        }
     }
 
     private void CheckIfCanAttack()

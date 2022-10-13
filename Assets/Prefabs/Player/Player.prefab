@@ -439,7 +439,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: {fileID: 0}
-  playerDash: {fileID: 0}
   playerIdle: {fileID: 8565076415714101052}
   playerRun: {fileID: 8565076416391199802}
   playerDead: {fileID: 0}
@@ -804,7 +803,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: 13f6e25ae7103064188bf2a2ce48c6c0,
     type: 3}
-  m_Color: {r: 0.9202615, g: 0.9716981, b: 0, a: 1}
+  m_Color: {r: 0.98882383, g: 1, b: 0.78679246, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

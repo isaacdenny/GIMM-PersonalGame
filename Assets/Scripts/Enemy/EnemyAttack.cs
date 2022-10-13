@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyAttack : State
 {
     [SerializeField] float attackDamage = 10f;
+    [SerializeField] float attackTime = 2f;
     // Start is called before the first frame update
     public override void Enter()
     {
@@ -21,8 +22,7 @@ public class EnemyAttack : State
 
     public IEnumerator Attack()
     {
-        yield return new WaitForSeconds(4);
-        Debug.Log("Attack");
+        yield return new WaitForSeconds(attackTime);
         Crystal.Instance.TakeDamage(attackDamage);
         complete = true;
     }

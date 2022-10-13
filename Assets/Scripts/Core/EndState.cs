@@ -3,23 +3,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LoseState : State
+public class EndState : State
 {
     private UIManager uiManager;
     public override void Enter()
     {
         base.Enter();
         uiManager = GameManager.Instance.GetUIManager();
-        InitLoseLevel();
+        InitEndPlay();
     }
-    private void InitLoseLevel()
+    private void InitEndPlay()
     {
         Time.timeScale = 0f;
-        uiManager.InitLoseScreen();
+        uiManager.InitEndScreen();
     }
 
     public override void Exit()
     {
-        uiManager.CloseLoseScreen();
+        uiManager.CloseEndScreen();
     }
 }

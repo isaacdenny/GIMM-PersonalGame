@@ -8,14 +8,13 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     [SerializeField] TMP_Text scoreText;
+    [SerializeField] TMP_Text finalScoreText;
     [SerializeField] TMP_Text timerText;
     [SerializeField] TMP_Text waveText;
-    [SerializeField] TMP_Text waveCountText;
     [SerializeField] Slider crystalHealthSlider;
 
     [SerializeField] Canvas mainUICanvas;
-    [SerializeField] Canvas winScreenCanvas;
-    [SerializeField] Canvas loseScreenCanvas;
+    [SerializeField] Canvas endScreenCanvas;
 
     [HideInInspector]
     public Crystal crystal;
@@ -37,7 +36,6 @@ public class UIManager : MonoBehaviour
     }
     void Start()
     {
-        waveCountText.text = "Total Waves: " + GameManager.Instance.GetWaveCount();
         crystal = Crystal.Instance;
         mainUICanvas.enabled = true;
     }
@@ -46,7 +44,12 @@ public class UIManager : MonoBehaviour
         UpdateCrystalHealthSlider();
     }
     internal void UpdateWave(int wave) => waveText.text = "Wave: " + wave;
-    internal void UpdateScore(int score) => scoreText.text = "Score: " + score;
+    internal void UpdateScore(int score)
+    {
+        scoreText.text = "Score: " + score;
+        finalScoreText.text = "Score: " + score;
+    }
+
     internal void UpdateTimer(float timer)
     {
         int minuteValue = (int)(timer / 60f);
@@ -67,26 +70,16 @@ public class UIManager : MonoBehaviour
 
         crystalHealthSlider.value = crystal.GetHealth() / 100f;
     }
-    internal void InitLoseScreen()
+    internal void InitEndScreen()
     {
         mainUICanvas.enabled = false;
-        loseScreenCanvas.enabled = true;
-    }
-    internal void InitWinScreen()
-    {
-        mainUICanvas.enabled = false;
-        winScreenCanvas.enabled = true;
+        endScreenCanvas.enabled = true;
     }
 
-    internal void CloseLoseScreen()
+    internal void CloseEndScreen()
     {
         mainUICanvas.enabled = true;
-        loseScreenCanvas.enabled = false;
+        endScreenCanvas.enabled = false;
     }
 
-    internal void CloseWinScreen()
-    {
-        mainUICanvas.enabled = true;
-        winScreenCanvas.enabled = false;
-    }
 }
