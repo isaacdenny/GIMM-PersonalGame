@@ -10,6 +10,7 @@ public class PlayerShoot : MonoBehaviour
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private GameObject muzzleFlashPrefab;
     [SerializeField] private Transform firePoint;
+    [SerializeField] private AudioSource shootAudioSource;
 
     [Header("Properties")]
     [SerializeField] float projectileSpeed = 20f;
@@ -39,6 +40,8 @@ public class PlayerShoot : MonoBehaviour
             GameObject muzzleFlash = Instantiate(muzzleFlashPrefab, firePoint.position, transform.rotation);
             muzzleFlash.transform.Rotate(0, 0, rotationOffset);
             Destroy(muzzleFlash, 0.5f);
+
+            shootAudioSource.Play();
         }
     }
 

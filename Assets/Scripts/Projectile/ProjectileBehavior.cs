@@ -5,6 +5,7 @@ using UnityEngine;
 public class ProjectileBehavior : MonoBehaviour
 {
     [SerializeField] private GameObject impactEffectPrefab;
+    [SerializeField] private AudioSource impactAudioSource;
     internal float damage;
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -20,6 +21,11 @@ public class ProjectileBehavior : MonoBehaviour
         {
             crystal.TakeDamage(damage);
         }
+
+        impactAudioSource.transform.SetParent(null);
+        impactAudioSource.Play();
+        Destroy(impactAudioSource, 3);
+
         Destroy(gameObject);
     }
 }
