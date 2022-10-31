@@ -7822,11 +7822,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1546820547}
     m_Modifications:
+    - target: {fileID: 6715873017312409475, guid: 752296d34811bec41bee0bdc2228e406,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 897393456}
     - target: {fileID: 9075553318752032282, guid: 752296d34811bec41bee0bdc2228e406,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 897393456}
+    - target: {fileID: 9075553319572780113, guid: 752296d34811bec41bee0bdc2228e406,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9075553319572780114, guid: 752296d34811bec41bee0bdc2228e406,
         type: 3}
       propertyPath: m_Pivot.x
