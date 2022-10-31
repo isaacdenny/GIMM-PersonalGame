@@ -115,4 +115,10 @@ public class GameManager : StateMachine
         uiManager.UpdateWave(currentWave);
     }
     internal UIManager GetUIManager() => uiManager;
+
+    public void QuitGame()
+    {
+        Application.Quit();
+        Debug.Log("Quit");
+    }
 }
