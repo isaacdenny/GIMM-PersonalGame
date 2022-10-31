@@ -116,7 +116,7 @@ public class GameManager : StateMachine
     }
     internal UIManager GetUIManager() => uiManager;
 
-    internal void QuitGame()
+    public void QuitGame()
     {
         Application.Quit();
         Debug.Log("Quit");
